@@ -44,11 +44,8 @@ public class Contact {
     public void viewAllContact(List<Contact> contacts) {
         int i = 1;
         for (Contact contact : contacts) {
-            System.out.println("#" + i + " Contact information: ");
-            System.out.println("Name: " + contact.name);
-            System.out.println("Phone #: " + contact.phone);
-            System.out.println("Email: " + contact.email);
-            System.out.println();
+            System.out.println("Contact #" + i);
+            contactInfo(contact);
             i++;
         }
     }
@@ -67,7 +64,7 @@ public class Contact {
     public void editContact(List<Contact> contacts) {
         System.out.print("Enter the index of the contact to edit it: ");
         int index = sc.nextInt();
-        System.out.println(contacts.get(index).toString());
+        contactInfo(contacts.get(index));
         System.out.print("What do you want to edit? (name/phone/email): ");
 
         String answer = sc.next();
@@ -104,10 +101,59 @@ public class Contact {
         System.out.println("Contact has been removed!");
     }
 
-    public void searchContact() {
+    public void searchContact(List<Contact> contacts) {
+        System.out.print("How do you want to search by name or by phone # or by email? (name/phone/email): ");
+        String searchOption = sc.next();
+
+        String name;
+        int phone;
+        String email;
+        if (searchOption.equals("name")) {
+            System.out.print("Enter the name of the contact to find it: ");
+            sc.nextLine();
+            name = sc.nextLine();
+
+            for (Contact contact : contacts) {
+                if (contact.name.equals(name)) {
+                    contactInfo(contact);
+                }
+            }
+        }
+        if (searchOption.equals("phone")) {
+            System.out.print("Enter the phone number of the contact to find it: ");
+            phone = sc.nextInt();
+            sc.nextLine();
+
+            for (Contact contact : contacts) {
+                if (contact.phone == phone) {
+                    contactInfo(contact);
+                }
+            }
+        }
+        if (searchOption.equals("email")) {
+            System.out.print("Enter the email of the contact to find it: ");
+            sc.nextLine();
+            email = sc.nextLine();
+
+            for (Contact contact : contacts) {
+                if (contact.email.equals(email)) {
+                    contactInfo(contact);
+                }
+            }
+        }
+
     }
 
     public void sortContact() {
+    }
+
+    public void contactInfo(Contact contact) {
+        System.out.println();
+        System.out.println("Contact information: ");
+        System.out.println("Name: " + contact.name);
+        System.out.println("Phone #: " + contact.phone);
+        System.out.println("Email: " + contact.email);
+        System.out.println();
     }
 
 }

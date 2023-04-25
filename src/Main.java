@@ -35,7 +35,7 @@ public class Main {
                     case 2 -> contact.addContact(contacts);
                     case 3 -> contact.editContact(contacts);
                     case 4 -> contact.deleteContsct(contacts);
-                    case 5 -> contact.searchContact();
+                    case 5 -> contact.searchContact(contacts);
                     case 6 -> contact.sortContact();
                     case 7 -> System.exit(0);
                     default -> System.out.println("Invalid value is added. Please try again!");
