@@ -1,9 +1,12 @@
 import java.util.List;
+import java.util.Scanner;
 
 public class Contact {
     private String name;
     private int phone;
     private String email;
+
+    static final Scanner sc = new Scanner(System.in);
 
     public Contact() {
     }
@@ -50,10 +53,19 @@ public class Contact {
         }
     }
 
-    public void addContact() {
+    public void addContact(List<Contact> contacts) {
+        System.out.print("Enter name: ");
+        String name = sc.nextLine();
+        System.out.print("Enter phone #: ");
+        int phone = sc.nextInt();
+        System.out.print("Enter email: ");
+        String email = sc.nextLine();
+
+        contacts.add(new Contact(name, phone, email));
     }
 
     public void editContact() {
+        
     }
 
     public void deleteContsct() {

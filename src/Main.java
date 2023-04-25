@@ -32,7 +32,7 @@ public class Main {
 
                 switch (option) {
                     case "1" -> contact.viewAllContact(contacts);
-                    case "2" -> contact.addContact();
+                    case "2" -> contact.addContact(contacts);
                     case "3" -> contact.editContact();
                     case "4" -> contact.deleteContsct();
                     case "5" -> contact.searchContact();
