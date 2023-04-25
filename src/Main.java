@@ -28,16 +28,16 @@ public class Main {
                         """);
 
                 System.out.print("Option: ");
-                String option = sc.nextLine();
+                int option = sc.nextInt();
 
                 switch (option) {
-                    case "1" -> contact.viewAllContact(contacts);
-                    case "2" -> contact.addContact(contacts);
-                    case "3" -> contact.editContact();
-                    case "4" -> contact.deleteContsct();
-                    case "5" -> contact.searchContact();
-                    case "6" -> contact.sortContact();
-                    case "7" -> System.exit(0);
+                    case 1 -> contact.viewAllContact(contacts);
+                    case 2 -> contact.addContact(contacts);
+                    case 3 -> contact.editContact(contacts);
+                    case 4 -> contact.deleteContsct(contacts);
+                    case 5 -> contact.searchContact();
+                    case 6 -> contact.sortContact();
+                    case 7 -> System.exit(0);
                     default -> System.out.println("Invalid value is added. Please try again!");
                 }
             }

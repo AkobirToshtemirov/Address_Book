@@ -60,15 +60,48 @@ public class Contact {
         int phone = sc.nextInt();
         System.out.print("Enter email: ");
         String email = sc.nextLine();
-
+        sc.nextLine();
         contacts.add(new Contact(name, phone, email));
     }
 
-    public void editContact() {
-        
+    public void editContact(List<Contact> contacts) {
+        System.out.print("Enter the index of the contact to edit it: ");
+        int index = sc.nextInt();
+        System.out.println(contacts.get(index).toString());
+        System.out.print("What do you want to edit? (name/phone/email): ");
+
+        String answer = sc.next();
+
+        String newName;
+        int newPhoneNum;
+        String newEmail;
+        if (answer.equals("name")) {
+            System.out.print("Enter new name: ");
+            sc.nextLine();
+            newName = sc.nextLine();
+            contacts.get(index).name = newName;
+        }
+        if (answer.equals("phone")) {
+            System.out.print("Enter new phone #: ");
+            newPhoneNum = sc.nextInt();
+            sc.nextLine();
+            contacts.get(index).phone = newPhoneNum;
+        }
+        if (answer.equals("email")) {
+            System.out.print("Enter new email: ");
+            sc.nextLine();
+            newEmail = sc.nextLine();
+            contacts.get(index).email = newEmail;
+        }
+
+        System.out.println("Contact has been edited succesfully!");
     }
 
-    public void deleteContsct() {
+    public void deleteContsct(List<Contact> contacts) {
+        System.out.print("Enter the index of the contact to delete it: ");
+        int index = sc.nextInt();
+        contacts.remove(index);
+        System.out.println("Contact has been removed!");
     }
 
     public void searchContact() {
