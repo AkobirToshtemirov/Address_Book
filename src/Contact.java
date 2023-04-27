@@ -1,6 +1,6 @@
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
-import java.util.Collections;
 
 public class Contact {
     private String name;
@@ -22,24 +22,12 @@ public class Contact {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public int getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
-        this.phone = phone;
-    }
-
     public String getEmail() {
         return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public void viewAllContact(List<Contact> contacts) {
@@ -57,9 +45,10 @@ public class Contact {
         System.out.print("Enter phone #: ");
         int phone = sc.nextInt();
         System.out.print("Enter email: ");
-        String email = sc.nextLine();
         sc.nextLine();
+        String email = sc.nextLine();
         contacts.add(new Contact(name, phone, email));
+
     }
 
     public void editContact(List<Contact> contacts) {
@@ -146,30 +135,26 @@ public class Contact {
     }
 
     public void sortContact(List<Contact> contacts) {
+        System.out.print("Would you like to sort by name or by phone number or by email? (name/phone/email):  ");
+        String option = sc.next();
 
-        System.out.println("Method does not work yet!");
-        System.out.println(404);
+        // Define a comparator based on the selected option
+        Comparator<Contact> comparator;
+        switch (option) {
+            case "name" -> comparator = Comparator.comparing(Contact::getName);
+            case "phone" -> comparator = Comparator.comparing(Contact::getPhone);
+            case "email" -> comparator = Comparator.comparing(Contact::getEmail);
+            default -> {
+                System.out.println("Invalid option");
+                return;
+            }
+        }
 
-//        System.out.print("How do you want to sort your contact book by names or phones or emails? (name/phone/email): ");
-//        String operation = sc.next();
-//
-//        if(operation.equals("name")) {
-//            for (Contact contact: contacts) {
-//
-//            }
-//        }
+        // Sort the list using the selected comparator
+        contacts.sort(comparator);
+        System.out.println("Contacts sorted by " + option);
+        viewAllContact(contacts);
     }
-
-
-//    public int compareByName(Contact other) {
-//        return name.compareTo(other.name);
-//    }
-//    public int compareByPhone(Contact other) {
-//        return Integer.compare(phone, other.phone);
-//    }
-//    public int compareByEmail(Contact other) {
-//        return email.compareTo(other.email);
-//    }
 
     public void contactInfo(Contact contact) {
         System.out.println();
